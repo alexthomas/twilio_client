@@ -34,8 +34,6 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 2.0.1'
 gem 'sunspot_rails'
 
-#gem 'mysql2'
-#gem "active_model_serializers", :git => "git://github.com/rails-api/active_model_serializers.git"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
