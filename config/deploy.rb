@@ -1,27 +1,19 @@
 require 'rvm/capistrano'
-
-# set :rvm_ruby_string, "1.9.3-p286" #Bear in mind mod_passenger will have been compiled by a specific version of ruby which it will *always* use, which may cause issues!
-#set :rvm_ruby_string, "1.9.3p125"  #staging
-set :rvm_ruby_string, "2.0.0p247" #local
+set :rvm_ruby_string, "2.0.0-p247" #tsb production
 set :rvm_type, :system # rvm running as multi-user
 set :rvm_path, '/usr/local/rvm' # as above, we're running multi-user rvm
 
 require 'bundler/capistrano'
-
-# set :stages, %w(production stage)
-# set :stages, %w(production)
-# set :default_stage, "production"
-# require 'capistrano/ext/multistage'
-
-set :application, "MOMENTS"
+ 
+set :application, "Moments"
 set :repository,  "gitosis@205.186.148.27:moments.git"
 set :port, "40022"
 set :deploy_to, "/var/www/ga.spa.me"
 
 server "205.186.148.27", :app, :web, :db, :primary => true
-set :port, 40022
 set :user, "deployer"                             # The server's user for deploys
 set :scm_passphrase, "rehj4w6i57iuyteg"           # The deploy user's password
+
 ssh_options[:forward_agent] = true
 
 set :scm, "git"
@@ -71,29 +63,6 @@ namespace :deploy do
 
 end
 
-# namespace :deploy do
-#   task :ln_assets do
-#     run <<-CMD
-#       rm -rf #{latest_release}/public/assets &&
-#       mkdir -p #{shared_path}/assets &&
-#       ln -s #{shared_path}/assets #{latest_release}/public/assets
-#     CMD
-#   end
-# 
-#   update_code
-#   ln_assets
-#   
-#   run_locally "rake assets:precompile"
-#   run_locally "cd public; tar -zcvf assets.tar.gz assets"
-#   top.upload "public/assets.tar.gz", "#{shared_path}", :via => :scp
-#   run "cd #{shared_path}; tar -zxvf assets.tar.gz"
-#   run_locally "rm public/assets.tar.gz"
-#   run_locally "rm -rf public/assets"
-#   
-#   create_symlink
-#   restart
-# end
-
 namespace :deploy do
   # http://stackoverflow.com/questions/9016002/speed-up-assetsprecompile-with-rails-3-1-3-2-capistrano-deployment
   namespace :assets do
@@ -108,21 +77,17 @@ namespace :deploy do
     end
   end
 end
+# if you want to clean up old releases on each deploy uncomment this:
+# after "deploy:restart", "deploy:cleanup"
 
-# after "deploy:create_symlink", "deploy:restart_workers"
- 
-# Rake helper task.
-# def run_remote_rake(rake_cmd)
-#   rake_args = ENV['RAKE_ARGS'].to_s.split(',')
-#   cmd = "cd #{fetch(:latest_release)} && #{fetch(:rake, "rake")} RAILS_ENV=#{fetch(:rails_env, "production")} #{rake_cmd}"
-#   cmd += "['#{rake_args.join("','")}']" unless rake_args.empty?
-#   run cmd
-#   set :rakefile, nil if exists?(:rakefile)
-# end
-#  
+# if you're still using the script/reaper helper you will need
+# these http://github.com/rails/irs_process_scripts
+
+# If you are using Passenger mod_rails uncomment this:
 # namespace :deploy do
-#   desc "Restart Resque Workers"
-#   task :restart_workers, :roles => :db do
-#     run_remote_rake "resque:restart_workers"
+#   task :start do ; end
+#   task :stop do ; end
+#   task :restart, :roles => :app, :except => { :no_release => true } do
+#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 #   end
 # end
