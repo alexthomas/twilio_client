@@ -50,8 +50,8 @@ gem 'simple_form'
 # gem 'wicked_pdf'
 gem 'twilio-ruby'
 
-gem 'accountable', '1.0.1', :git => "git://github.com/alexthomas/accountable.git"
-gem 'videoable', '1.0.1',:git => "git://github.com/alexthomas/videoable.git"
+# gem 'accountable', '1.0.1', :git => "git://github.com/alexthomas/accountable.git"
+# gem 'videoable', '1.0.1',:git => "git://github.com/alexthomas/videoable.git"
 gem 'twilio', '0.0.1',:git => "git://github.com/alexthomas/twilio.git"
 
 
