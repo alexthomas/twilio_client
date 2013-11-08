@@ -1,9 +1,11 @@
 require 'rvm/capistrano'
+require 'bundler/capistrano'
+
 set :rvm_ruby_string, "2.0.0-p247" #tsb production
 set :rvm_type, :system # rvm running as multi-user
 set :rvm_path, '/usr/local/rvm' # as above, we're running multi-user rvm
 
-require 'bundler/capistrano'
+
  
 set :application, "Moments"
 set :repository,  "ssh://gitosis@205.186.148.27:40022/loopt.git"
