@@ -8,7 +8,7 @@ set :rvm_path, '/usr/local/rvm' # as above, we're running multi-user rvm
 
  
 set :application, "Moments"
-set :repository,  "ssh://gitosis@205.186.148.27:40022/loopt.git"
+set :repository,  "ssh://gitosis@205.186.148.27:40022/moments.git"
 set :port, "40022"
 set :deploy_to, "/var/www/genapp.spa.me"
 
