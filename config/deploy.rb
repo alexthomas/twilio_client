@@ -6,9 +6,9 @@ set :rvm_path, '/usr/local/rvm' # as above, we're running multi-user rvm
 require 'bundler/capistrano'
  
 set :application, "Moments"
-set :repository,  "gitosis@205.186.148.27:moments.git"
+set :repository,  "ssh://gitosis@205.186.148.27:40022/loopt.git"
 set :port, "40022"
-set :deploy_to, "/var/www/ga.spa.me"
+set :deploy_to, "/var/www/genapp.spa.me"
 
 server "205.186.148.27", :app, :web, :db, :primary => true
 set :user, "deployer"                             # The server's user for deploys
