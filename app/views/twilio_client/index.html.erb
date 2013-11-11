@@ -1,16 +1,16 @@
-<section id="phone">
-	
-<input type="text" id="number" name="number"
-      placeholder="Enter a phone number to call"/>
+<section id="twilio-client" class="hidden" data-app-id="<%=twilio_app_id%>">
+	<input type="text" id="number" name="number"
+	      placeholder="Enter a phone number to call"/>
 
-<button class="call" onclick="call();">
-      Call
-</button>
+	<button class="call">
+	      Call
+	</button>
 
-<button class="hangup" onclick="hangup();">
-    Hangup
-</button>
+	<button class="hangup hidden">
+	    Hangup
+	</button>
+</section>
 
 <ul id="people"></ul>
 
-<div id="log">Loading pigeons...</div>
+<div id="log"></div>

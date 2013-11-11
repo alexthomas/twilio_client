@@ -4,7 +4,17 @@ Moments::Application.routes.draw do
     resources :incoming_calls, :only => :index
     resources :incoming_messages, :only => :index
   end
-    
+  
+  namespace :api, defaults: {format: 'json'} do
+    scope :module => 'v1' do
+      namespace :twilio_api, :path => 'twilio', :as => 'twilio' do
+        resources :twilio_client_api, :path => 'client', :only => [:capability_token] do
+          post 'capability_token', :on => :collection
+        end
+      end
+      
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
