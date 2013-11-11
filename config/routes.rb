@@ -1,5 +1,10 @@
 Moments::Application.routes.draw do
   root :to => "twilio_client#index"
+  namespace :twilio do
+    resources :incoming_calls, :only => :index
+    resources :incoming_messages, :only => :index
+  end
+    
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
