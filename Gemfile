@@ -22,62 +22,22 @@ end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-
-gem 'mustache-rails', :require => 'mustache/railtie'
-gem 'cancan'
-gem 'will_paginate'
-gem 'acts-as-taggable-on', '~> 2.4.1'
-gem "friendly_id", "~> 4.0.9"
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 2.0.1'
-gem 'sunspot_rails'
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  # Use CoffeeScript for .js.coffee assets and views
   gem 'coffee-rails', '~> 4.0.0'
-  gem 'rmagick'
-  # Use Uglifier as compressor for JavaScript assets
-  gem 'uglifier', '>= 1.3.0'
 end
 
-# gem 'paperclip'
-gem 'devise'
-gem 'simple_form'
-# gem 'wicked_pdf'
-gem 'twilio-ruby'
-
-# gem 'accountable', '1.0.1', :git => "git://github.com/alexthomas/accountable.git"
-# gem 'videoable', '1.0.1',:git => "git://github.com/alexthomas/videoable.git"
 gem 'twilio', '0.0.1',:git => "git://github.com/alexthomas/twilio.git"
 
-
-gem 'redis'
-gem 'redis-namespace'
-gem 'resque', :require => 'resque/server'
-
-gem 'tinymce-rails'
-
 group :development do
-  # gem 'localtunnel'
   gem 'rspec-rails'
   gem 'sunspot_solr'
   gem 'faker'
   gem 'annotate'
-  # gem 'thin'
-  # gem 'private_pub'
-  # gem 'cocaine', '0.3.2'
-end
-
-group :production, :stage do
-  #gem 'sunspot_rails'
-  gem 'memcache-client'
-  # gem 'wkhtmltopdf-binary'
-  gem 'mysql2'
-  #gem 'newrelic_rpm'
 end
 
 # Deploy with Capistrano
